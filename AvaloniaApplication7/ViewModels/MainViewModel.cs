@@ -10,12 +10,13 @@ public partial class MainViewModel : ViewModelBase
     private ParcelModel _model;
 
 
+
     private string _name { get; set; }
     private string _id { get; set; }
     private DateOnly _submitDate { get; set; }
     private string _origin { get; set; }
     private string _destination { get; set; }
-    private string _status { get; set; }
+    //private string _status { get; set; }
     private int _cost { get; set; }
     private int _deliveryDate { get; set; }
 
@@ -81,18 +82,18 @@ public partial class MainViewModel : ViewModelBase
             }
         }
     }
-    public string StatusInput
-    {
-        get { return _status; }
-        set
-        {
-            if (_status != value)
-            {
-                _status = value;
-                OnPropertyChanged();
-            }
-        }
-    }
+    //public string StatusInput
+    //{
+    //    get { return _status; }
+    //    set
+    //    {
+    //        if (_status != value)
+    //        {
+    //            _status = value;
+    //            OnPropertyChanged();
+    //        }
+    //    }
+    //}
     public int CostInput
     {
         get { return _cost; }
@@ -119,6 +120,31 @@ public partial class MainViewModel : ViewModelBase
     }
 
 
+    public ObservableCollection<string> StatusOptions { get; } =
+    new ObservableCollection<string>
+    {
+        "feldolgozas alatt",
+        "kiszallitas alatt",
+        "kiszallitva",
+        "torolve"
+    };
+
+    private string _status;
+    public string StatusInput
+    {
+        get => _status;
+        set
+        {
+            if (_status != value)
+            {
+                _status = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+
+
 
     public RelayCommand AddParcelCommand { get; set; }
     public RelayCommand SaveCommand { get; set; }
@@ -138,10 +164,21 @@ public partial class MainViewModel : ViewModelBase
         AddParcelCommand = new RelayCommand(AddParcel);
     }
 
-    
+
     private void AddParcel()
     {
-        Parcel package = new Parcel(IDInput, ParcelNameInput, SubmitDate, Origin, Destination, Status, Cost, DeliveryDate);
+        var package = new Parcel(
+            ParcelNameInput,
+            IDInput,
+            SubmitInput,
+            OriginInput,
+            DestinationInput,
+            StatusInput,
+            CostInput,
+            ETAInput
+        );
+
         Parcels.Add(package);
     }
+
 }

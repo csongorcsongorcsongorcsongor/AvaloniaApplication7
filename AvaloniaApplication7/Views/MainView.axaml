@@ -50,12 +50,11 @@
         
         <Label Grid.Row="5" Grid.Column="0" Content="Allapot:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <StackPanel Grid.Row="5" Grid.Column="1" Margin="20" VerticalAlignment="Center">
-          <ComboBox SelectedIndex="0" MaxDropDownHeight="100">
-            <ComboBoxItem>feldolgozas alatt</ComboBoxItem>
-            <ComboBoxItem>kiszallitas alatt</ComboBoxItem>
-            <ComboBoxItem>kiszallitva</ComboBoxItem>
-            <ComboBoxItem>torolve</ComboBoxItem>
-          </ComboBox>
+          <ComboBox
+    ItemsSource="{Binding StatusOptions}"
+    SelectedItem="{Binding StatusInput}"
+    MaxDropDownHeight="100"/>
+
         </StackPanel>        
         
         <Label Grid.Row="6" Grid.Column="0" Content="Ar:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -75,7 +74,7 @@
 
         <ScrollViewer Grid.Column="2" Grid.Row="0" Grid.RowSpan="8" Background="LightGray">
 			<StackPanel>
-				<ItemsControl ItemsSource="{Binding Parcel}">
+                <ItemsControl ItemsSource="{Binding Parcels}">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
 							 <card:ParcelCard/>
