@@ -17,26 +17,27 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        // Line below is needed to remove Avalonia data validation.
-        // Without this line you will get duplicate validations from both Avalonia and CT
         BindingPlugins.DataValidators.RemoveAt(0);
 
-        ParcelModel model  = new ParcelModel();
+        var model = new ParcelModel();
+        var viewModel = new MainViewModel(model);
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = model
+                DataContext = viewModel
             };
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
             singleViewPlatform.MainView = new MainView
             {
-                DataContext = model
+                DataContext = viewModel
             };
         }
 
         base.OnFrameworkInitializationCompleted();
     }
+
 }

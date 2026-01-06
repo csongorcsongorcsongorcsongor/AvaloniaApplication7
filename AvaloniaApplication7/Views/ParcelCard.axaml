@@ -16,33 +16,33 @@
 			<RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-			<ColumnDefinition />
+			<ColumnDefinition Width="2*"/>
 			<ColumnDefinition Width="4*"/>
 			<ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="2" Content="{Binding ID}"></Label>
+        <Label Grid.Row="0" Grid.Column="0" Content="{Binding ID}"></Label>
 
         <Label Grid.Row="1" Grid.Column="0" Content="Name:"></Label>
         <Label Grid.Row="1" Grid.Column="1" Content="{Binding Name}"></Label>
         
         <Label Grid.Row="2" Grid.Column="0" Content="Feladas Idopontja:"></Label>
-        <Label Grid.Row="2" Grid.Column="1" Content="{Binding SubmitValaminemtudom mit kell ide irni}"></Label>
+        <Label Grid.Row="2" Grid.Column="1" Content="{Binding SubmitDate}"></Label>
         
         <Label Grid.Row="3" Grid.Column="0" Content="Feladas helye:"></Label>
-        <Label Grid.Row="3" Grid.Column="1" Content="{Binding ParcelName}"></Label>
+        <Label Grid.Row="3" Grid.Column="1" Content="{Binding Origin}"></Label>
         
         <Label Grid.Row="4" Grid.Column="0" Content="Celpont:"></Label>
-        <Label Grid.Row="4" Grid.Column="1" Content="{Binding ParcelName}"></Label>
+        <Label Grid.Row="4" Grid.Column="1" Content="{Binding Destination}"></Label>
         
         <Label Grid.Row="5" Grid.Column="0" Content="Allapot:"></Label>
-        <Label Grid.Row="5" Grid.Column="1" Content="{Binding ParcelName}"></Label>
+        <Label Grid.Row="5" Grid.Column="1" Content="{Binding Status}"></Label>
         
         <Label Grid.Row="6" Grid.Column="0" Content="Ar:"></Label>
-        <Label Grid.Row="6" Grid.Column="1" Content="{Binding ParcelName}"></Label>
+        <Label Grid.Row="6" Grid.Column="1" Content="{Binding Cost}"></Label>
         
         <Label Grid.Row="7" Grid.Column="0" Content="Szallitas:"></Label>
-        <Label Grid.Row="7" Grid.Column="1" Content="{Binding ParcelName}"></Label>
+        <Label Grid.Row="7" Grid.Column="1" Content="{Binding DeliveryDate}"></Label>
         
         
 
