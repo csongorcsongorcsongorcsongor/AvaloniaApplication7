@@ -167,6 +167,14 @@ public partial class MainViewModel : ViewModelBase
 
     private void AddParcel()
     {
+        if (CostInput <= 0)
+            return;
+
+        int deliveryDays = ETAInput;
+
+        if (StatusInput == "kiszallitva")
+            deliveryDays = 0;
+
         var package = new Parcel(
             ParcelNameInput,
             IDInput,
@@ -175,7 +183,7 @@ public partial class MainViewModel : ViewModelBase
             DestinationInput,
             StatusInput,
             CostInput,
-            ETAInput
+            deliveryDays
         );
 
         Parcels.Add(package);
