@@ -162,8 +162,39 @@ public partial class MainViewModel : ViewModelBase
 
         Parcels = new ObservableCollection<Parcel>();
         AddParcelCommand = new RelayCommand(AddParcel);
+
+        SaveCommand = new RelayCommand(OnSave);
+        LoadCommand = new RelayCommand(() => { LoadEvent?.Invoke(this, EventArgs.Empty); });
     }
 
+    private void OnSave()
+    {
+        var parcel = new Parcel(ParcelNameInput,
+            IDInput,
+            SubmitInput,
+            OriginInput,
+            DestinationInput,
+            StatusInput,
+            CostInput, ETAInput);
+        _model.SetParcel(parcel);
+        SaveEvent?.Invoke(this, EventArgs.Empty);
+    }
+    private void Model_ParcelLoaded(object? sender, ParcelEventArgs e)
+    {
+        int deliveryDays = ETAInput;
+
+        if (StatusInput == "kiszallitva")
+            deliveryDays = 0;
+
+        ParcelNameInput = e.Parcel.Name;
+        IDInput = e.Parcel.ID;
+        SubmitInput = e.Parcel.SubmitDate;
+        OriginInput = e.Parcel.Origin;
+        DestinationInput = e.Parcel.Destination;
+        StatusInput = e.Parcel.Status;
+        CostInput = e.Parcel.Cost;
+        deliveryDays = e.Parcel.DeliveryDate; 
+    }
 
     private void AddParcel()
     {
