@@ -1,0 +1,89 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaApplication7.ViewModels"
+             xmlns:card="clr-namespace:AvaloniaApplication7"
+             mc:Ignorable="d" d:DesignWidth="1600" d:DesignHeight="1080"
+             x:Class="AvaloniaApplication7.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="ID:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding IDInput}" VerticalAlignment="Center"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Csomag neve:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ParcelNameInput}" VerticalAlignment="Center"/>
+
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Feladas:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SubmitInput}" VerticalAlignment="Center"/>
+
+        
+
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Feladas helye:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding OriginInput}" VerticalAlignment="Center"/>
+        
+        <Label Grid.Row="4" Grid.Column="0" Content="Celpont:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding DestinationInput}" VerticalAlignment="Center"/>
+        
+        <Label Grid.Row="5" Grid.Column="0" Content="Allapot:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="5" Grid.Column="1" Margin="20" VerticalAlignment="Center">
+          <ComboBox SelectedIndex="0" MaxDropDownHeight="100">
+            <ComboBoxItem>feldolgozas alatt</ComboBoxItem>
+            <ComboBoxItem>kiszallitas alatt</ComboBoxItem>
+            <ComboBoxItem>kiszallitva</ComboBoxItem>
+            <ComboBoxItem>torolve</ComboBoxItem>
+          </ComboBox>
+        </StackPanel>        
+        
+        <Label Grid.Row="6" Grid.Column="0" Content="Ar:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding CostInput}" VerticalAlignment="Center"/>
+        
+            
+        <Label Grid.Row="7" Grid.Column="0" Content="Szallitasi ido:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding ETAInput}" VerticalAlignment="Center"/>
+        
+
+        <Button Grid.Column="1" Grid.Row="8" Content="Hozzaadas" Command="{Binding AddParcelCommand}"/>
+        <WrapPanel Grid.Row="8" Grid.Column="2" Margin="5">
+			 <Button  Content="Betoltes" Command="{Binding LoadCommand}"/>
+                 <Button  Content="Mentes" Command="{Binding SaveCommand}"/>
+        </WrapPanel>
+        
+
+        <ScrollViewer Grid.Column="2" Grid.Row="0" Grid.RowSpan="8" Background="LightGray">
+			<StackPanel>
+				<ItemsControl ItemsSource="{Binding Parcel}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							 <card:ParcelCard/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+
+</UserControl>
