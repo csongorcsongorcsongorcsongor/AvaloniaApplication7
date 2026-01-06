@@ -30,6 +30,10 @@ namespace AvaloniaApplication7.Models
             Cost = cost;
             DeliveryDate = deliverydate;
         }
+        public override string ToString()
+        {
+            return $"{Name};{ID};{SubmitDate};{Origin};{Destination};{Status};{Cost};{DeliveryDate}";
+        }
 
     }
 }
